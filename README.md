@@ -1,24 +1,28 @@
-# README
+# <そろキャンごはん>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<ソロキャンプにおけるおすすめのキャンプ飯レシピを投稿でき、キャンパー同士で交流がとれるSNSです。投稿されたレシピに対していいねやコメントをする事が出来ます>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<最近キャンプにはまっており、ソロキャンプをする際のご飯は複数人でのキャンプと違って手軽で美味しいという所に重きを置いて考えた時に、色々な人のソロキャンプ用のレシピが投稿・閲覧できるアプリがあれば便利だと考え、このテーマにしました>
 
-* Ruby version
+### ターゲットユーザ
+<ソロキャンパー>
 
-* System dependencies
+### 主な利用シーン
+<ソロキャンプに適した料理のレシピを投稿したり、検索する事が出来る>
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
