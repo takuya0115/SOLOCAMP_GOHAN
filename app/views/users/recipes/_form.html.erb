@@ -1,0 +1,30 @@
+<%= form_with model:recipe,local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :料理名 %>
+    <%= f.text_field :cooking_name, class: 'form-control cooking_name' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :材料 %>
+    <%= f.text_area :material, class: 'form-control material' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :作り方 %>
+    <%= f.text_area :making, class: 'form-control making' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :所要時間 %>
+    <%= f.text_area :make_time, class: 'form-control make_time' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :完成画像 %>
+    <%= f.file_field :recipe_image, class: "form-control-file user_image", accept: 'image/*' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "レシピを投稿する",class: 'btn btn-success' %>
+  </div>
+<% end %>

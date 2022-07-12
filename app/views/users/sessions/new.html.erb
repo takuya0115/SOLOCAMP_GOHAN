@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-3">
+      <h4 class="table-active col-8 text-center">ログイン</h4>
+      <p class="table-active mt-5 ml-2">会員の方はこちらからログイン</p>
+    </div>
+    <div class="col-12 mt-5 ml-5">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%#= render "admin/shared/error_messages", resource: resource %>
+        <div class="form-group row">
+          <%= f.label :email, 'メールアドレス', class: 'col-sm-3 control-label' %><br />
+          <%= f.email_field :email, :placeholder => "sample@example.com", autofocus: true, autocomplete: "email", class: 'rounded col-sm-5' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :password, 'パスワード', class: 'col-sm-3 control-label' %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: 'rounded col-sm-5' %>
+        </div>
+
+        <%# if devise_mapping.rememberable? %>
+          <!--<div class="field">-->
+            <%#= f.check_box :remember_me %>
+            <%#= f.label :remember_me %>
+          <!--</div>-->
+        <%# end %>
+
+        <div class="actions col-7 text-center">
+          <%= f.submit "ログイン", class: "btn btn-primary mt-3" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <p class="table-active mt-3 ml-2 text-center">会員登録がお済みでない方は</p>
+    </div>
+    <div class="col-12 ml-5">
+        <%= link_to 'こちら', new_user_registration_path %>から新規登録を行なってください。
+    </div>
+  </div>
+</div>

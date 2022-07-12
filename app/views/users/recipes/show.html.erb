@@ -1,0 +1,14 @@
+<h2>レシピ詳細</h2>
+	<table class='table'>
+	  <tr>
+      <td><%= link_to(@recipe.user) do %>
+        <%#= image_tag @recipe.user.get_profile_image, size:"100x100" %><br>
+        <%= @recipe.user.name %>
+        <% end %>
+      </td>
+      <td><%= link_to @recipe.cooking_name, @recipe %></td>
+      <td><%= @recipe.material %></td>
+      <td><%= @recipe.making %></td>
+      <td><%= @recipe.make_time %></td>
+    </tr>
+  </table>
