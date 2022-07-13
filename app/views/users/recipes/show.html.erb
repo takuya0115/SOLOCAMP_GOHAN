@@ -2,13 +2,30 @@
 	<table class='table'>
 	  <tr>
       <td><%= link_to(@recipe.user) do %>
-        <%#= image_tag @recipe.user.get_profile_image, size:"100x100" %><br>
+        <%#= image_tag @recipe.user.get_recipe_image, size:"100x100" %><br>
         <%= @recipe.user.name %>
         <% end %>
       </td>
-      <td><%= link_to @recipe.cooking_name, @recipe %></td>
+      <td><%= @recipe.cooking_name %></td>
       <td><%= @recipe.material %></td>
       <td><%= @recipe.making %></td>
       <td><%= @recipe.make_time %></td>
     </tr>
   </table>
+  <div class="row">
+    <ul>
+      <li class="comments_create">
+        <h3 class="text-left title">コメント</h3>
+      </li>
+      <li id="comment_area">
+        <%= render partial: 'users/comments/index', locals: { comments: @comments } %>
+      </li>
+    </ul>
+    <hr>
+    <% if user_signed_in? %>
+    <div class="commment-create">
+      <h3 class="text-left">コメントを投稿する</h3>
+        <%= render partial: 'users/comments/form', locals: { comment: @comment, recipe: @recipe } %>
+    </div>
+    <% end %>
+  </div>

@@ -15,13 +15,6 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  #def self.guest
-    #find_or_create_by!(email: 'aaa@aaa.com') do |user|
-      #user.password = SecureRandom.urlsafe_base64
-      #user.password_confirmation = user.password
-      #user.name = 'ゲスト'
-    #end
-  #end
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -29,8 +22,8 @@ class User < ApplicationRecord
     end
   end
 
-  def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  def favorited_by?(recipe_id)
+    favorites.where(recipe_id: recipe_id).exists?
   end
 
   def follow(user)
@@ -45,11 +38,4 @@ class User < ApplicationRecord
   followings.include?(user)
   end
 
-  def get_profile_image(width, height)
-  unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/no_image.jpeg')
-    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  end
-  profile_image.variant(resize_to_limit: [width, height]).processed
-  end
 end

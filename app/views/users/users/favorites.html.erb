@@ -1,0 +1,15 @@
+<h2>お気に入りレシピ</h2>
+<% @favorite_recipes.each do |recipe| %>
+<tr>
+  <td>
+    <% if recipe.recipe_image.attached? %>
+      <%= image_tag recipe.recipe_image, size:'100x100' %>
+    <% else %>
+      <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to recipe.cooking_name,recipe, class: "recipe_#{recipe.id}" %>
+  </td>
+</tr>
+<% end %>

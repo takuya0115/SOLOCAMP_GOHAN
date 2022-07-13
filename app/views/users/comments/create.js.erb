@@ -1,0 +1,3 @@
+$("#recipe_<%= @recipe.id %> .comments-count").html("コメント数: <%= @recipe.recipe_comments.count %>");
+$(".recipe-comments").html("<%= j(render partial: 'users/comments/index', locals: { comments: @comments })%>");
+$("#recipe_comment_comment").val("");

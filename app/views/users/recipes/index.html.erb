@@ -20,7 +20,9 @@
         <td>
           <%= link_to recipe.cooking_name,recipe, class: "recipe_#{recipe.id}" %>
         </td>
-        <td class=<%= "favorite-" + recipe.id.to_s %>>
+        <td>
+          <%# if logged_in? %>
+          <%= render partial:'users/favorites/favorite_btn',locals:{recipe:recipe} %>
             <%#= render "users/favorites/btn", recipe: recipe %>
         </td>
       </tr>

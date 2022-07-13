@@ -1,5 +1,9 @@
-<% if recipe.favorited_by?(current_user) %>
-  <%= link_to recipe.favorites.count, recipe_favorites_path(recipe), method: :delete, remote: true, class: "glyphicon glyphicon-heart" %>
+<% if current_user.favorited_by?(recipe.id) %>
+  <%= link_to recipe_favorites_path((recipe.id)), method: :delete, remote: true do %>
+  <p id="fovorite_<%= recipe.id %>"><i class="fas fa-heart unlike-btn" style="color: #e82a2a;"></i><span style="color: #e82a2a"><%= recipe.favorites.count %></span></p>
+  <% end %>
 <% else %>
-  <%= link_to recipe.favorites.count, recipe_favorites_path(recipe), method: :post, remote: true, class: "glyphicon glyphicon-heart-empty" %>
+  <%= link_to recipe_favorites_path((recipe.id)), method: :post, remote: true do %>
+  <p id="favorite_<%= recipe.id %>"><i class="far fa-heart like-btn" style="color: #e82a2a;"></i><span style="color: #e82a2a"><%= recipe.favorites.count %></span></p>
+  <% end %>
 <% end %>

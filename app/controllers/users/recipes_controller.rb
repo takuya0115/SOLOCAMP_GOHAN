@@ -20,6 +20,8 @@ class Users::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @comments = @recipe.comments.order(created_at: :desc) #コメントを新着順で表示
+    @comment = Comment.new
   end
 
   private
