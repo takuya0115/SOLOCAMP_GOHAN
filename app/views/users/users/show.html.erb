@@ -1,5 +1,7 @@
+　<% if current_user.id == @user.id %>
 　<h4 class="font-weight-bold">登録情報</h4>
     <%= link_to "編集する", edit_user_path(@user), class: "btn btn-success col-sm-2 ml-5 font-weight-bold"%>
+  <% end %>
     <table class="customer-table table-bordered">
       <tr>
         <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
@@ -10,6 +12,50 @@
         <td class="col-sm-5"><%= @user.email %></td>
       </tr>
     </table>
+    <div>
+      <%= link_to "フォロー一覧", user_followings_path(@user) %>
+    </div>
+    <div>
+      <%= link_to "フォロワー一覧", user_followers_path(@user) %>
+    </div>
+
+    <% if @user.follow_request?(current_user, @user) %>
+    <div class="form-group">
+      <div class="schedule-item">
+        <div class="schedule-item-header text-left">
+          <p class="bold"><i class="fas fa-star"></i>You have follow request<i class="fas fa-star"></i></p>
+        </div>
+        <div class="schedule-item-body text-left">
+          <p><%= @user.name %> requests you to be mate</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.matchers?(@user) %>
+    <div class="form-group">
+      <div class="schedule-item">
+        <div class="schedule-item-header text-left">
+          <p class="bold"><%= @user.name %> is your mate</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user.id == @user.id %>
+
+  <% else %>
+    <% unless current_user.following?(@user) %>
+      <div class="actions">
+        <%= link_to 'Request to be mate', user_relationships_path(@user.id), method: :post, class:"sign-up-btn" %>
+      </div>
+    <% else %>
+      <div class="actions">
+        <%= link_to 'Cancel to your request', user_relationships_path(@user.id), method: :delete, class:"sign-up-btn" %>
+      </div>
+    <% end %>
+  <% end %>
+
     <p><%= link_to"お気に入りレシピ", favorites_user_path(@user) %></p>
 <h2 class="mt-3">レシピを投稿する</h2>
   <%= render 'users/recipes/form', recipe: @recipe %>

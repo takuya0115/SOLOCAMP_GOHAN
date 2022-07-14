@@ -1,31 +1,37 @@
-<!-- コメント内容(２件) ------------------------------------------------------------------>
-<%= comments.count %>件コメント
-<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-<% comments.first(2).each do |comment| %>
-  <% unless comment.id.nil? %>
-  	<li class="comment-container">
-		<div class="comment-box">
-			<div class="comment-text">
-			  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
-			    <div class="comment-entry">
-  				    <%= comment.comment %>
-  				    <% if comment.user == current_user %>
-			      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-			      			<i class="fas fa-trash" style="color: black;"></i>
-			      		<% end %>
-			    	  <% end %>
-  				</div>
-				<span class="comment-date pull-right">
-				      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-				</span>
-			</div>
-		</div>
-	</li>
-  <% end %>
-<% end %>
-<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
-	<div class="collapse" id="collapseExample">
-			<% comments.offset(2).each do |comment| %>
+<li class="comments_create">
+  <h3 class="text-left title">コメント</h3>
+  </li>
+  <li id="comment_area">
+    <%#= render partial: 'users/comments/index', locals: { comments: @comments } %>
+    <!-- コメント内容(２件) ------------------------------------------------------------------>
+    <%= comments.count %>件コメント
+    <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+    <%@comments.first(2).each do |comment| %>
+    <%# comments.each do |comment| %>
+      <% unless comment.id.nil? %>
+      	<li class="comment-container">
+    		<div class="comment-box">
+    			<div class="comment-text">
+    			  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
+    			    <div class="comment-entry">
+      				    <%= comment.comment %>
+      				    <% if comment.user == current_user %>
+    			      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+    			      			<i class="fas fa-trash" style="color: black;"></i>
+    			      		<% end %>
+    			    	  <% end %>
+      				</div>
+    				<span class="comment-date pull-right">
+    				      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    				</span>
+    			</div>
+    		</div>
+    	</li>
+      <% end %>
+    <% end %>
+    <!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+    <div class="collapse test" id="collapseExample">
+    	<% @comments.offset(2).each do |comment| %>
 			  <% unless comment.id.nil? %>
 			  	<li class="comment-container">
 					<div class="comment-box">
@@ -47,4 +53,46 @@
 				</li>
 			  <% end %>
 			<% end %>
-	</div>
+    </div>
+          </li>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- コメント内容(２件) ------------------------------------------------------------------>
+<%#= comments.count %>
+<!--<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>-->
+<%# comments.first(2).each do |comment| %>
+  <%# unless comment.id.nil? %>
+  	<!--<li class="comment-container">-->
+		<!--<div class="comment-box">-->
+			<!--<div class="comment-text">-->
+			  <%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %>
+<!--			    <div class="comment-entry">-->
+<!--  				    <%#= comment.comment %>-->
+<!--  				    <%# if comment.user == current_user %>-->
+<!--			      		<%#= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>-->
+<!--			      			<i class="fas fa-trash" style="color: black;"></i>-->
+<!--			      		<%# end %>-->
+<!--			    	  <%# end %>-->
+<!--  				</div>-->
+<!--				<span class="comment-date pull-right">-->
+<!--				      <%#= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>-->
+<!--				</span>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</li>-->
+<!--  <%# end %>-->
+<!--<%# end %>-->
+<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+<!--	<div class="collapse" id="collapseExample">-->
+<!--    <%#= render partial: 'users/comments/index2', locals: { comments: comments } %>-->
+<!--	</div>-->

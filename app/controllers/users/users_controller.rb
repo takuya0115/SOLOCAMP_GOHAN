@@ -6,8 +6,8 @@ class Users::UsersController < ApplicationController
   end
 
   def index
+    @mates = current_user.matchers
     @users = User.all
-    @recipe = Recipe.new
   end
 
   def edit
@@ -27,6 +27,17 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites= Favorite.where(user_id: @user.id).pluck(:recipe_id)
     @favorite_recipes = Recipe.find(favorites)
+  end
+
+  def followings
+    user = User.find(params[:user_id])
+		@users = user.followings
+		render 'followings'
+  end
+
+  def followers
+    user = User.find(params[:user_id])
+		@users = user.followers
   end
 
   private

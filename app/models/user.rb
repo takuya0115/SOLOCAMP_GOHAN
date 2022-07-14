@@ -8,10 +8,14 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_recipes, through: :favorites, source: :recipe
   has_many :comments, dependent: :destroy
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followers, through: :reverse_of_relationships, source: :follower
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followings, through: :relationships, source: :followed
+
+    # フォローしている側のユーザー (active relationship)
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed
+
+  # フォローされている側のユーザー(passive relationship)
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
 
@@ -22,20 +26,34 @@ class User < ApplicationRecord
     end
   end
 
-  def favorited_by?(recipe_id)
-    favorites.where(recipe_id: recipe_id).exists?
+  # ユーザーをフォロー
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
   end
 
-  def follow(user)
-  relationships.create(followed_id: user.id)
+  # ユーザーをアンフォロー
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def unfollow(user)
-  relationships.find_by(followed_id: user.id).destroy
+  # 相手をフォローしていればtrueを返す
+  def following?(other_user)
+    active_relationships.find_by(followed_id: other_user.id)
   end
 
-  def following?(user)
-  followings.include?(user)
+  # 友達（互いにフォローしている）をデータベースから取得
+  def matchers
+    followings & followers
+  end
+
+  # 相手と友達になっていればtrueを返す
+  def matchers?(other_user)
+    active_relationships.find_by(followed_id: other_user.id) && passive_relationships.find_by(follower_id: other_user.id)
+  end
+
+  # 自分はフォローしていない&相手からフォローされていればtrueを返す
+  def follow_request?(user, other_user)
+    !user.matchers?(other_user) && other_user.following?(user)
   end
 
 end

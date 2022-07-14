@@ -7,16 +7,18 @@ class Users::CommentsController < ApplicationController
     if @comment.save
       flash.now[:notice] = "コメントを投稿しました"
       @comment = Comment.new
-      render :"users/recipes/show"
+      #render :"users/recipes/show"
     end
   end
 
   def destroy
-    @commnet = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     @comments = @recipe.comments.order(created_at: :desc) #コメントを新着順で表示
-    if @commnet.destroy
+    #binding.pry
+    if @comment.destroy
       flash.now[:notice] = "コメントを削除しました"
-      render :"users/recipes/show"
+      #render :"users/recipes/show"
     end
   end
 
