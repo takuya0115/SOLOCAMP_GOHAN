@@ -29,6 +29,11 @@ class Users::UsersController < ApplicationController
     @favorite_recipes = Recipe.find(favorites)
   end
 
+  def recipes
+    @user = User.find(params[:id])
+    @recipes = Recipe.where(user_id: @user.id)
+  end
+
   def followings
     user = User.find(params[:user_id])
 		@users = user.followings

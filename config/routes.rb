@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   #namespace :users do
    # get 'homes/top'
   #end
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]do
       member do
         get :favorites
+        get :recipes
       end
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
   end
+
+  get '/search', to: 'searches#search'
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
