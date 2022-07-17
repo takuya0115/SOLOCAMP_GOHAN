@@ -5,10 +5,7 @@
       	<table class='table'>
       	  <tr class="table-info"><th>投稿ユーザー</th></tr>
       	  <tr>
-      	    <td><%= link_to(@recipe.user) do %>
-              <%= @recipe.user.name %>
-              <% end %>
-            </td>
+      	    <td><%= link_to @recipe.user.name, admin_user_path(@recipe) %></td>
           </tr>
           <tr class="table-info"><th>料理名</th><tr>
           <tr><td><%= @recipe.cooking_name %></td></tr>
@@ -21,17 +18,8 @@
         </table>
         <div class="row">
           <ul id="comment_area1">
-            <%= render partial: 'users/comments/index', locals: { comments: @comments } %>
+            <%= render partial: 'admin/comments/index', locals: { comments: @comments } %>
           </ul>
-          <hr>
-          <% if user_signed_in? %>
-            <% if current_user.name != "guestuser" %>
-            <div class="commment-create">
-              <h4 class="text-left">コメント投稿</h4>
-                <%= render partial: 'users/comments/form', locals: { comment: @comment, recipe: @recipe } %>
-            </div>
-            <% end %>
-          <% end %>
         </div>
     </div>
   </div>

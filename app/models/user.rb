@@ -67,7 +67,9 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content + '%')
     end
   end
-  
-  
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 end

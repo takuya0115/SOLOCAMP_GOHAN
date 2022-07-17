@@ -1,13 +1,13 @@
 class Users::RelationshipsController < ApplicationController
   def create
     Relationship.create(follower_id: current_user.id, followed_id: params[:user_id])
-    redirect_to user_path(params[:user_id]), notice: "友達になりました!"
+    redirect_to user_path(params[:user_id]), notice: "フォローしました"
   end
 
   def destroy
     other_user = User.find(params[:user_id])
     current_user.unfollow(other_user)
-    redirect_to user_path(params[:user_id]), notice: "友達を解除しました！"
+    redirect_to user_path(params[:user_id]), notice: "フォローを解除しました！"
   end
 
   def followings

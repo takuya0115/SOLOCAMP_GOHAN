@@ -13,11 +13,9 @@
     			  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
     			    <div class="comment-entry">
       				    <%= comment.comment %>
-      				    <% if comment.user == current_user %>
-    			      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+    			      		<%= link_to admin_recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
     			      			<i class="fas fa-trash" style="color: black;"></i>
     			      		<% end %>
-    			    	  <% end %>
       				</div>
     				<span class="comment-date pull-right">
     				      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
@@ -37,11 +35,9 @@
 						  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
 						    <div class="comment-entry">
 			  				    <%= comment.comment %>
-			  				    <% if comment.user == current_user %>
-						      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+						      		<%= link_to admin_recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
 			      						<i class="fas fa-trash" style="color: black;"></i>
 			      					<% end %>
-						    	<% end %>
 			  				</div>
 							<span class="comment-date pull-right">
 							      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>

@@ -48,6 +48,4 @@ class Users::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:cooking_name, :material, :making, :make_time, :recipe_image)
   end
-
 end
-

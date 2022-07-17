@@ -1,47 +1,55 @@
-<div class="item-list">
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8">
+      <h3>ユーザー一覧</h3>
 
-  <div class="item-list-header">
-    <p class="bold">フレンドユーザー</p>
-  </div>
-
-  <div class="item-list-content">
-    <ul>
-      <% @mates.each do |user| %>
-        <%# 友達（互いにフォローしている）を一覧表示 %>
-        <div class="each-item">
-          <div class="item-content-right">
-            <p><%= link_to user.name, user_path(user.id) %></p>
-          </div>
-        </div>
-      <% end %>
-    </ul>
-  </div><%# End of item-list-content %>
-
-  <div class="item-list-header">
-    <p class="bold">全てのユーザー</p>
-  </div>
-
-  <div class="item-list-content">
-    <ul>
-      <% @users.each do |user| %>
-        <%# 自分以外のユーザーを一覧表示 %>
-        <% unless current_user.id == user.id %>
-          <div class="each-item">
-
-            <li>
-              <div class="each-item-content">
-                <div class="item-content-right">
-                  <p><%= link_to user.name, user_path(user.id) %></p>
-                  <% if user.follow_request?(current_user, user) %>
-                    <p><i class="fas fa-star"></i></p>
-                  <% end %>
-                </div>
+      <div class="item-list-header">
+        <p class="bold">フレンドユーザー</p>
+      </div>
+      <div class="item-list-content">
+        <ul>
+          <% @mates.each do |user| %>
+            <%# 友達（互いにフォローしている）を一覧表示 %>
+          <li>
+            <div class="each-item-content">
+              <div class="item-content-right">
+                <p><%= link_to user.name, user_path(user.id) %>さん</p>
               </div>
-            </li>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div><%# End of item-list-content %>
 
-          </div>
-        <% end %>
-      <% end %>
-    </ul>
-  </div><%# End of item-list-content %>
+      <div class="item-list-header">
+        <p class="bold">全てのユーザー</p>
+      </div>
+
+      <div class="item-list-content">
+        <ul>
+          <% @users.each do |user| %>
+          <% if user.name != "guestuser" %>
+            <%# 自分以外のユーザーを一覧表示 %>
+            <% unless current_user.id == user.id %>
+              <div class="each-item">
+
+                <li>
+                  <div class="each-item-content">
+                    <div class="item-content-right">
+                      <p><%= link_to user.name, user_path(user.id) %>さん</p>
+                      <%# if user.follow_request?(current_user, user) %>
+                        <!--<p><i class="fas fa-star"></i></p>-->
+                      <%# end %>
+                    </div>
+                  </div>
+                </li>
+
+              </div>
+            <% end %>
+          <% end %>
+          <% end %>
+        </ul>
+      </div><%# End of item-list-content %>
+    </div>
+  </div>
 </div>

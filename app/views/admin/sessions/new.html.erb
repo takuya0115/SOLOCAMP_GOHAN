@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <h4 class="table-active mt-3">管理者ログイン</h4>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-5 ml-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "admin/shared/error_messages", resource: resource %>
+      <div class="form-group row">
+        <%= f.label :email, 'メールアドレス', class: 'col-sm-3 control-label' %>
+        <%= f.email_field :email, autofocus: true, placeholder: "sample@com", autocomplete: "email", class: 'rounded col-sm-5' %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password, 'パスワード', class: 'col-sm-3 control-label'  %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'rounded col-sm-5' %>
+      </div>
+
+      <div class="actions col-8 text-center">
+        <%= f.submit "ログイン", class: "btn btn-primary col-3 mt-3" %>
+      </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>

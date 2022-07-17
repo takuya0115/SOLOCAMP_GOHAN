@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   get 'searches/search'
-  #namespace :users do
-   # get 'homes/top'
-  #end
+  namespace :admin do
+    root to: "admin/users#index"
+    resources :users, only:[:show, :index, :edit, :update]
+    resources :recipes, only: [:index, :show, :edit, :destroy]do
+      resources :comments, only: [:destroy]
+    end
+  end
 
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -25,6 +29,8 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+    get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch 'users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :recipes, only: [:index,:show,:edit,:create,:destroy,:update]do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
