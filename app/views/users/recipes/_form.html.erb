@@ -1,17 +1,17 @@
 <%= form_with model:recipe,local:true do |f| %>
   <div class="form-group">
     <%= f.label :料理名 %>
-    <%= f.text_field :cooking_name, class: 'form-control cooking_name' %>
+    <%= f.text_field :cooking_name, class: 'form-control cooking_name', size: "15" %>
   </div>
 
   <div class="form-group">
     <%= f.label :材料 %>
-    <%= f.text_area :material, class: 'form-control material' %>
+    <%= f.text_area :material, class: 'form-control material', size: "20x5" %>
   </div>
 
   <div class="form-group">
     <%= f.label :作り方 %>
-    <%= f.text_area :making, class: 'form-control making' %>
+    <%= f.text_area :making, class: 'form-control making', size: "30x10"  %>
   </div>
 
   <div class="form-group">

@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-mx-auto">
-      <h3>レシピ詳細</h3>
+    <div class="col-sm-12 col-md-10 col-mx-auto">
+      <h3 class="m-3">レシピ詳細</h3>
       	<table class='table'>
       	  <tr class="table-info"><th>投稿ユーザー</th></tr>
       	  <tr>
@@ -19,7 +19,17 @@
       	  <tr class="table-info"><th>作成時間</th></tr>
       	  <tr><td><%= @recipe.make_time %></td></tr>
         </table>
-        <div class="row">
+
+        <div class="col-sm-12 col-md-8 col-mx-auto">
+          <h5 class="mt-3">完成画像<h5>
+          <% if @recipe.recipe_image.attached? %>
+            <%= image_tag @recipe.recipe_image, size:'200x200' %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100x100" %>
+          <% end %>
+        </div>
+
+        <div class="row mt-5">
           <ul id="comment_area1">
             <%= render partial: 'users/comments/index', locals: { comments: @comments } %>
           </ul>

@@ -1,9 +1,11 @@
 <div class="serch_form">
     <%= form_with url: search_path,method: :get, local: true do |f| %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, placeholder: "レシピ/ユーザーを検索", style: "border: none" %>
     <%= f.select :model,options_for_select({"ユーザー"=>"user","レシピ"=>"recipe"})%>
     <%= f.select :method,options_for_select({"完全一致"=>"perfect","前方一致"=>"forward",
         "後方一致"=>"backward","部分一致"=>"partial"})%>
-    <%= f.submit'検索' %>
+    <%= f.button :type => "submit", style: "border: none" do %>
+        <i class='fa fa-search'></i>
+      <% end %>
     <% end %>
 </div>

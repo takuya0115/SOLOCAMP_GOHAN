@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-2 ">
+    <div class="col-sm-12 col-md-4 ">
   		<h3>投稿レシピ</h3>
 
       <% @recipes.each do |recipe| %>
@@ -17,9 +17,12 @@
           </td>
           <td>
             <% if recipe.user == current_user %>
-              <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
-              <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
+              <%= link_to '編集', edit_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
+              <%= link_to '削除', recipe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
             <% end %> <%#= render "users/favorites/btn", recipe: recipe %>
           </td>
         </tr>
       <% end %>
+    </div>
+  </div>
+</div>

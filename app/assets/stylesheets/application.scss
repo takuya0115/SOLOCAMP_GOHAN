@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+ * {
+   box-sizing: border-box;
+ }
+
+ html,body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+ }
+
+ body {
+   display: flex;
+   flex-direction: column;
+ }
+
+ footer {
+   margin-top: auto;
+   padding: 30px 0;
+   text-align: center;
+ }
+
+.under1 {
+  background: linear-gradient(transparent  70%, #ffc037  70%);
+}
+
+* { font-family: 'Kosugi Maru', sans-serif; }

@@ -18,7 +18,7 @@
             <tr>
               <td><%= recipe.id %></td>
               <td><%= link_to recipe.cooking_name, admin_recipe_path(recipe) %></td>
-              <td><%= link_to recipe.user.name, admin_user_path(recipe) %>
+              <td><%= link_to recipe.user.name, admin_user_path(recipe) %></td>
               <td>
                 <% if recipe.recipe_image.attached? %>
                   <%= image_tag recipe.recipe_image, size:'100x100' %>
@@ -27,8 +27,8 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to 'Edit', edit_admin_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
-                <%= link_to 'Destroy', admin_recipe_path(recipe), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
+                <%= link_to '編集', edit_admin_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
+                <%= link_to '削除', admin_recipe_path(recipe), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
               </td>
             </tr>
           <% end %>

@@ -1,15 +1,10 @@
 　<div class='container'>
     <div class='row'>
       <div class="col-sm-12 col-md-8">
-      　<h3>登録情報</h3>
-      　<% if current_user.id == @user.id %>
-      　   <% if @user.name != "guestuser" %>
-          <%= link_to "編集する", edit_user_path(@user), class: "btn btn-success col-sm-2 ml-5 font-weight-bold"%>
-          <% end %>
-        <% end %>
-          <table class="customer-table table-bordered">
+      　<h3>マイページ</h3>
+
+          <table class="customer-table table-bordered mt-3">
             <% if current_user.id == @user.id %>
-              <%# if @user.name != "guestuser" %>
               <tr>
                 <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
                 <td class="col-sm-5"><%= @user.name %></td>
@@ -23,12 +18,18 @@
                 <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
                 <td class="col-sm-5"><%= @user.name %></td>
               </tr>
-              <%# end %>
             <% end %>
+            <div class="text-right">
+              <% if current_user.id == @user.id %>
+            　   <% if @user.name != "guestuser" %>
+                  <%= link_to "編集ページ", edit_user_path(@user), class: "btn btn-success" %>
+                <% end %>
+              <% end %>
+            </div>
           </table>
 
           <% if current_user.name != "guestuser" %>
-            <div>
+            <div class="mt-3">
               <%= link_to "フォロー一覧", user_followings_path(@user) %>
             </div>
             <div>
@@ -59,11 +60,11 @@
             <% end %>
 
 
-            <p><%= link_to"お気に入りレシピ", favorites_user_path(@user) %></p>
-            <p><%= link_to"投稿レシピ", recipes_user_path(@user) %></p>
+            <p><%= link_to"お気に入りレシピ", favorites_user_path(@user), class: "btn btn-warning mt-3" %></p>
+            <p><%= link_to"投稿レシピ", recipes_user_path(@user), class: "btn btn-info" %></p>
 
             <% if current_user.id == @user.id %>
-        　     <h2 class="mt-3">レシピを投稿する</h2>
+        　     <h3 class="mt-3">レシピを投稿する</h3>
               <%= render 'users/recipes/form', recipe: @recipe %>
             <% end %>
           <% end %>

@@ -1,26 +1,23 @@
-<h4>コメント</h4>
+<h3 class="mt-3 ">コメント</h3>
   <li id="comment_area">
-    <%#= render partial: 'users/comments/index', locals: { comments: @comments } %>
     <!-- コメント内容(２件) ------------------------------------------------------------------>
-    <%= comments.count %>件コメント
-    <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">--コメントを全て表示--</h6>
+    全<%= comments.count %>件のコメント
+    <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">ーコメントを全て表示ー</h6>
     <%@comments.first(2).each do |comment| %>
-    <%# comments.each do |comment| %>
       <% unless comment.id.nil? %>
       	<li class="comment-container">
     		<div class="comment-box">
     			<div class="comment-text">
-    			  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
     			    <div class="comment-entry">
-      				    <%= comment.comment %>
-      				    <% if comment.user == current_user %>
-    			      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-    			      			<i class="fas fa-trash" style="color: black;"></i>
-    			      		<% end %>
-    			    	  <% end %>
+    				    <%= comment.comment %>
+    				    <% if comment.user == current_user %>
+  			      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+  			      			<i class="fas fa-trash" style="color: black;"></i>
+  			      		<% end %>
+  			    	  <% end %>
       				</div>
     				<span class="comment-date pull-right">
-    				      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    				  <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
     				</span>
     			</div>
     		</div>
@@ -34,17 +31,16 @@
 			  	<li class="comment-container">
 					<div class="comment-box">
 						<div class="comment-text">
-						  <p><%#= link_to "@#{comment.user.name}", users_user_path(comment.user.id) %></p>
 						    <div class="comment-entry">
-			  				    <%= comment.comment %>
-			  				    <% if comment.user == current_user %>
-						      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
-			      						<i class="fas fa-trash" style="color: black;"></i>
-			      					<% end %>
-						    	<% end %>
+		  				    <%= comment.comment %>
+		  				    <% if comment.user == current_user %>
+					      		<%= link_to recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, class: "comment_destroy" do %>
+		      						<i class="fas fa-trash" style="color: black;"></i>
+		      					<% end %>
+					    	  <% end %>
 			  				</div>
 							<span class="comment-date pull-right">
-							      <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+							  <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
 							</span>
 						</div>
 					</div>
