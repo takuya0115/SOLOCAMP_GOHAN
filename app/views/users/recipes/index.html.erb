@@ -18,7 +18,7 @@
                 <% if recipe.recipe_image.attached? %>
                   <%= image_tag recipe.recipe_image, size:'100x100' %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "100x100" %>
+                  <%= image_tag asset_path('no_image'), size: "100x100" %>
                 <% end %>
               </td>
               <td>
