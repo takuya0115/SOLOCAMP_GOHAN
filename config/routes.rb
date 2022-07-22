@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   get 'searches/search'
   namespace :admin do
     root to: "admin/users#index"
-    resources :users, only:[:show, :index, :edit, :update]
-    resources :recipes, only: [:index, :show, :edit, :destroy]do
+    resources :users, only:[:show, :index, :edit, :update]do
+      member do
+        get :recipes
+      end
+    end
+    resources :recipes, only: [:index, :show, :edit, :update, :destroy]do
       resources :comments, only: [:destroy]
     end
   end

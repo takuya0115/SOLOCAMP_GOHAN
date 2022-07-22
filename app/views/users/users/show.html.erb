@@ -65,6 +65,7 @@
 
             <% if current_user.id == @user.id %>
         　     <h3 class="mt-3">レシピを投稿する</h3>
+        　     <%= render 'layouts/error', model: @recipe %>
               <%= render 'users/recipes/form', recipe: @recipe %>
             <% end %>
           <% end %>

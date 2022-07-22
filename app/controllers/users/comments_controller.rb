@@ -7,7 +7,6 @@ class Users::CommentsController < ApplicationController
     if @comment.save
       flash.now[:notice] = "コメントを投稿しました"
       @comment = Comment.new
-      #render :"users/recipes/show"
     end
   end
 
@@ -18,7 +17,6 @@ class Users::CommentsController < ApplicationController
     #binding.pry
     if @comment.destroy
       flash.now[:notice] = "コメントを削除しました"
-      #render :"users/recipes/show"
     end
   end
 

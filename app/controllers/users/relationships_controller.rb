@@ -1,4 +1,6 @@
 class Users::RelationshipsController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+
   def create
     Relationship.create(follower_id: current_user.id, followed_id: params[:user_id])
     redirect_to user_path(params[:user_id]), notice: "フォローしました"

@@ -22,4 +22,9 @@ class Recipe < ApplicationRecord
     favorites.where(user_id: user).exists?
   end
 
+  validates :cooking_name, presence:true, length:{maximum:50}
+  validates :material, presence:true, length:{maximum:100}
+  validates :making, presence:true, length:{maximum:400}
+  validates :make_time, presence:true, length:{maximum:20}
+
 end

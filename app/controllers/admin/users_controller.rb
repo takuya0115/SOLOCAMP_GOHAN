@@ -24,8 +24,14 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    private
-    def user_params
-        params.require(:user).permit(:email, :password, :name, :is_deleted)
-    end
+  def recipes
+    @user = User.find(params[:id])
+    @recipes = Recipe.where(user_id: @user.id)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :name, :is_deleted)
+  end
 end

@@ -1,4 +1,6 @@
 class Admin::CommentsController < ApplicationController
+  before_action :authenticate_admin!
+
   def destroy
     @comment = Comment.find(params[:id])
     @recipe = Recipe.find(params[:recipe_id])
@@ -9,4 +11,5 @@ class Admin::CommentsController < ApplicationController
       #render :"users/recipes/show"
     end
   end
+
 end

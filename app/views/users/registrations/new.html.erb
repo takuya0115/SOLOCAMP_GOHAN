@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-      <h4 class="table-active col-3 text-center mt-3">新規会員登録</h4>
+      <h3 class="col-3 text-center mt-3">新規会員登録</h3>
     <div class="col-sm-12 mt-5">
       <%= form_with model: @user, url: user_registration_path, method: :post,  local:true do |f| %>
-        <%#= render "admin/shared/error_messages", resource: resource %>
+        <%= render "admin/shared/error_messages", resource: resource %>
 
         <div class="form-group row">
           <%= f.label :名前, class: 'col-sm-2 control-label' %><br />
-          <%= f.text_field :name, autofocus: true, class: 'rounded col-sm-3' %>
+          <%= f.text_field :name, autofocus: true, class: 'rounded col-sm-3 ml-5' %>
         </div>
 
         <div class="form-group row">
@@ -30,7 +30,7 @@
         </div>
 
       <% end %>
-      <h4 class="table-active col-3 text-center">既に登録済みの方</h4>
+      <h4 class="col-3 text-center">既に登録済みの方</h4>
 
       <%= link_to "こちら", new_user_session_path %>
       <span> からログインしてください。</span>

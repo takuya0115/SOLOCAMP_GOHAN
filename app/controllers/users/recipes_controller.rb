@@ -1,5 +1,5 @@
 class Users::RecipesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:top]
 
   def new
     @recipe = Recipe.new
@@ -12,6 +12,7 @@ class Users::RecipesController < ApplicationController
       redirect_to recipes_path(@recipe), notice: "レシピを投稿しました"
     else
       @recipes = Recipe.all
+      flash.now[:error] = "レシピの投稿に失敗しました"
       render 'index'
     end
   end
@@ -28,9 +29,16 @@ class Users::RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+    if @recipe.user == current_user
+      render "edit"
+    else
+      redirect_to recipe_path
+    end
   end
 
   def update
+    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe), notice: "レシピを更新しました"
     else
@@ -39,8 +47,9 @@ class Users::RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_path
+    redirect_to recipes_user_path
   end
 
   private
