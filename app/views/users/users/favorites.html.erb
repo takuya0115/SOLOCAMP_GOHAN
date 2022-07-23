@@ -2,34 +2,38 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 ">
       <h3 class="m-3">お気に入りレシピ</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>完成画像</th>
-            <th>料理名</th>
-            <th>投稿ユーザー</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @favorite_recipes.each do |recipe| %>
-          <tr>
-            <td>
-              <% if recipe.recipe_image.attached? %>
-                <%= image_tag recipe.recipe_image, size:'100x100' %>
-              <% else %>
-                <%= image_tag 'no_image', size: "100x100" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to recipe.cooking_name,recipe, class: "recipe_#{recipe.id}" %>
-            </td>
-            <td>
-              <%= link_to recipe.user.name, admin_user_path(recipe) %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <% if @favorite_recipes.any? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>完成画像</th>
+              <th>料理名</th>
+              <th>投稿ユーザー</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @favorite_recipes.each do |recipe| %>
+            <tr>
+              <td>
+                <% if recipe.recipe_image.attached? %>
+                  <%= image_tag recipe.recipe_image, size:'100x100' %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to recipe.cooking_name,recipe, class: "recipe_#{recipe.id}" %>
+              </td>
+              <td>
+                <%= link_to recipe.user.name, admin_user_path(recipe) %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>お気に入りレシピはありません</p>
+      <% end %>
     </div>
   </div>
 </div>

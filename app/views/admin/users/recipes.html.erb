@@ -1,26 +1,31 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-4 ">
+    <div class="col-sm-12 col-md-8 ">
   		<h3>投稿レシピ</h3>
-
-      <% @recipes.each do |recipe| %>
-        <tr>
-          <td>
-            <% if recipe.recipe_image.attached? %>
-              <%= image_tag recipe.recipe_image, size:'100x100' %>
-            <% else %>
-              <%= image_tag 'no_image', size: "100x100" %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to recipe.cooking_name,recipe, class: "recipe_#{recipe.id}" %>
-          </td>
-          <td>
-            <%= link_to '編集', edit_admin_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
-            <%= link_to '削除', recipe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
-          </td>
-        </tr>
-      <% end %>
+      <table>
+        <% if @recipes.any? %>
+          <% @recipes.each do |recipe| %>
+            <tr>
+              <td>
+                <% if recipe.recipe_image.attached? %>
+                  <%= image_tag recipe.recipe_image, size:'100x100' %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to recipe.cooking_name,admin_recipe_path(recipe), class: "recipe_#{recipe.id}" %>
+              </td>
+              <td>
+                <%= link_to '編集', edit_admin_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
+                <%= link_to '削除', admin_recipe_path(recipe), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <p>投稿レシピはありません<p>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

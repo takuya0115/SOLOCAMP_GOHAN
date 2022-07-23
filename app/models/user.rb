@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, :email, presence: true, uniqueness: true
 
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|

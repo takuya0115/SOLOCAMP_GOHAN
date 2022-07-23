@@ -1,4 +1,4 @@
-<%= form_with model:recipe,local:true do |f| %>
+<%= form_with model:recipe, url: admin_recipe_path(recipe.id) ,local:true do |f| %>
   <div class="form-group">
     <%= f.label :料理名 %>
     <%= f.text_field :cooking_name, class: 'form-control cooking_name' %>

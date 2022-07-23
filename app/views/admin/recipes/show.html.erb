@@ -5,7 +5,7 @@
       	<table class='table'>
       	  <tr class="table-info"><th>投稿ユーザー</th></tr>
       	  <tr>
-      	    <td><%= link_to @recipe.user.name, admin_user_path(@recipe) %></td>
+      	    <td><%= link_to @recipe.user.name, admin_user_path(@recipe.user) %></td>
           </tr>
           <tr class="table-info"><th>料理名</th><tr>
           <tr><td><%= @recipe.cooking_name %></td></tr>

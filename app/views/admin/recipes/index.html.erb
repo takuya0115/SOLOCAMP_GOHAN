@@ -18,7 +18,7 @@
             <tr>
               <td><%= recipe.id %></td>
               <td><%= link_to recipe.cooking_name, admin_recipe_path(recipe) %></td>
-              <td><%= link_to recipe.user.name, admin_user_path(recipe) %></td>
+              <td><%= link_to recipe.user.name, admin_user_path(recipe.user) %></td>
               <td>
                 <% if recipe.recipe_image.attached? %>
                   <%= image_tag recipe.recipe_image, size:'100x100' %>
