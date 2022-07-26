@@ -7,6 +7,8 @@ class Users::CommentsController < ApplicationController
     if @comment.save
       flash.now[:notice] = "コメントを投稿しました"
       @comment = Comment.new
+    else
+      render 'users/recipes/show'
     end
   end
 
