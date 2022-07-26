@@ -5,8 +5,7 @@ class Users::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comments = @recipe.comments.order(created_at: :desc) #コメントを新着順で表示
     if @comment.save
-      flash.now[:notice] = "コメントを投稿しました"
-      @comment = Comment.new
+       @comment = Comment.new
     else
       render 'users/recipes/show'
     end

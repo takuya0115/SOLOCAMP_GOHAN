@@ -7,13 +7,13 @@ class Recipe < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Recipe.where(title: content)
+      Recipe.where(cooking_name: content)
     elsif method == 'forward'
-      Recipe.where('title LIKE ?', content+'%')
+      Recipe.where('cooking_name LIKE ?', content+'%')
     elsif method == 'backward'
-      Recipe.where('title LIKE ?', '%'+content)
+      Recipe.where('cooking_name LIKE ?', '%'+content)
     else
-      Recipe.where('title LIKE ?', '%'+content+'%')
+      Recipe.where('cooking_name LIKE ?', '%'+content+'%')
     end
   end
 

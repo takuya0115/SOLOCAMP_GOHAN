@@ -4,20 +4,24 @@
       　<h3>マイページ</h3>
 
           <table class="customer-table table-bordered mt-3">
-            <% if current_user.id == @user.id %>
-              <tr>
-                <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
-                <td class="col-sm-5"><%= @user.name %></td>
-              </tr>
-              <tr>
-                <td class="col-sm-2" bgcolor=#f5f5f5>メールアドレス</td>
-                <td class="col-sm-5"><%= @user.email %></td>
-              </tr>
-              <% else %>
-              <tr>
-                <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
-                <td class="col-sm-5"><%= @user.name %></td>
-              </tr>
+            <% if current_user.name != "guestuser" %>
+              <% if current_user.id == @user.id %>
+                <tr>
+                  <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
+                  <td class="col-sm-5"><%= @user.name %></td>
+                </tr>
+                <tr>
+                  <td class="col-sm-2" bgcolor=#f5f5f5>メールアドレス</td>
+                  <td class="col-sm-5"><%= @user.email %></td>
+                </tr>
+                <% else %>
+                <tr>
+                  <td class="col-sm-2" bgcolor=#f5f5f5>名前</td>
+                  <td class="col-sm-5"><%= @user.name %></td>
+                </tr>
+              <% end %>
+            <% else %>
+              <h4>ゲストログイン中です</h4>
             <% end %>
             <div class="text-right">
               <% if current_user.id == @user.id %>

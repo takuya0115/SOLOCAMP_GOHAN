@@ -38,7 +38,6 @@
             <% if current_user.name != "guestuser" %>
             <div class="commment-create">
               <h4 class="text-left">コメント投稿</h4>
-                <%= render 'layouts/error', model: @comment %>
                 <%= render partial: 'users/comments/form', locals: { comment: @comment, recipe: @recipe } %>
             </div>
             <% end %>
