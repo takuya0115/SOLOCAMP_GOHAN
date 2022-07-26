@@ -19,6 +19,7 @@ class Users::RecipesController < ApplicationController
 
   def index
     # byebug
+    @recipe = Recipe.new
     @recipes = Recipe.all
   end
 
