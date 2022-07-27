@@ -62,9 +62,11 @@
         <% end %>
         </ul>
       </div>
-      <div>
-        <%= render 'layouts/search' %>
-      </div>
+      <% if user_signed_in? %>
+        <div>
+          <%= render 'layouts/search' %>
+        </div>
+      <% end %>
     </div>
   </nav>
 </header>

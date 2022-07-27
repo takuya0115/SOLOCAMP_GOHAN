@@ -1,7 +1,7 @@
 <% if @model == 'user' %>
-    <h3>Users search for "<%= @content %>"</h3>
+    <h3>"<%= @content %>"をユーザー検索</h3>
   <%= render 'users/users/index', users: @records %>
 <% elsif @model == 'recipe' %>
-    <h3>Recipes search for "<%= @content %>"</h3>
+    <h3>"<%= @content %>"をレシピ検索</h3>
   <%= render 'users/recipes/index', recipes: @records %>
 <% end %>
