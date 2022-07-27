@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
 
   def favorited_by?(user)
     # byebug
-    favorites.where(user_id: user).exists?
+    favorites.where(user_id: user.id).exists?
   end
 
   validates :cooking_name, presence:true, length:{maximum:50}

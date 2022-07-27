@@ -69,6 +69,10 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content + '%')
     end
   end
+  
+  def favorited_by?(recipe_id)
+    favorites.where(recipe_id: recipe_id).exists?
+  end  
 
   def active_for_authentication?
     super && (is_deleted == false)
