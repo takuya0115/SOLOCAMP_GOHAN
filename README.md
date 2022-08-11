@@ -14,7 +14,7 @@
 ソロキャンプに適した料理のレシピを投稿したり、検索する事が出来る
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux 2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
