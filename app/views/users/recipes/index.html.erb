@@ -1,8 +1,12 @@
 <div class='container'>
   <%= render 'layouts/error', model: @recipe %>
   <div class='row'>
-    <div class="col-sm-12 col-md-1"></div>
-      <h3 class="mu-4">レシピ一覧</h3>
+    <div class="col-sm-12"></div>
+      <h3>レシピ一覧</h3>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-3">
+        <h5><%= link_to 'レシピを投稿する', recipes_path %></h5>
+      </div>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>

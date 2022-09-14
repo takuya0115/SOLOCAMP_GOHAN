@@ -13,7 +13,7 @@ class Users::RecipesController < ApplicationController
     else
       @recipes = Recipe.all
       #flash.now[:error] = "レシピの投稿に失敗しました"
-      render 'index'
+      render 'create'
     end
   end
 
