@@ -5,7 +5,9 @@
       <h3>レシピ一覧</h3>
       <div class="col-sm-6"></div>
       <div class="col-sm-3">
-        <h5><%= link_to 'レシピを投稿する', recipes_path %></h5>
+        <% if current_user.name != "guestuser" %>
+          <h5><%= link_to 'レシピを投稿する', new_recipe_path %></h5>
+        <% end %>
       </div>
       <table class='table table-hover table-inverse'>
         <thead>
@@ -38,7 +40,7 @@
                 <% if current_user.name != "guestuser" %>
                   <% if recipe.user == current_user %>
                     <%= link_to '編集', edit_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
-                    <%= link_to '削除', recipe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
+                    <%= link_to '削除', recipe_path(recipe), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
                   <% else %>
                     <%= render partial:'users/favorites/favorite_btn',locals:{ recipe: recipe} %>
                   <% end %>

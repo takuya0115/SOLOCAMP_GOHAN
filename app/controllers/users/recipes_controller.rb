@@ -13,7 +13,7 @@ class Users::RecipesController < ApplicationController
     else
       @recipes = Recipe.all
       #flash.now[:error] = "レシピの投稿に失敗しました"
-      render 'create'
+      render 'new'
     end
   end
 
@@ -50,7 +50,7 @@ class Users::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_user_path, notice: "レシピを削除しました"
+    redirect_to recipes_path, notice: "レシピを削除しました"
   end
 
   private
