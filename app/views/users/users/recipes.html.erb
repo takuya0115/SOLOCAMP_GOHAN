@@ -18,7 +18,7 @@
             <td>
               <% if recipe.user == current_user %>
                 <%= link_to '編集', edit_recipe_path(recipe), class: "btn btn-sm btn-success edit_recipe_#{recipe.id}" %>
-                <%= link_to '削除', recipe, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
+                <%= link_to '削除', recipe, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger destroy_recipe_#{recipe.id}" %></td>
               <% end %>
             </td>
           </tr>
